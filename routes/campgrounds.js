@@ -24,10 +24,10 @@ router.get("/", function (req,res){
 router.post("/", middleWare.isLoggedIn,  function (req,res){
     
     //get data from form and add to camp ground array
-    var name = req.body.name;
-    var price = req.body.price;
-    var image = req.body.Image;
-    var description = req.body.description;
+    var name = req.body.campground.name;
+    var price = req.body.campground.price;
+    var image = req.body.campground.Image;
+    var description = req.body.campground.description;
     var username = req.user.username
     var id = req.user._id
     var newCamp = {name:name, price:price, image: image, description: description, creator:{id,username}}
@@ -38,7 +38,7 @@ router.post("/", middleWare.isLoggedIn,  function (req,res){
     }else{
          
           //redirect to campgrounds page
-          console.log(newCamp.creator)
+          
     res.redirect("/campgrounds")
         
     }
